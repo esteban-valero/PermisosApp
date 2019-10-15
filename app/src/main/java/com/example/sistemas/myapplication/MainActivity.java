@@ -11,7 +11,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,17 +20,11 @@ public class MainActivity extends AppCompatActivity {
     private final int MY_PERMISSIONS_REQUEST_GPS=3;
     private final int MY_PERMISSIONS_REQUEST_GALERY=4;
     private static final String TAG = " MainActivity ";
-    private TextView permissionKO;
-    private TextView permissionOK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        permissionKO = (TextView) findViewById(R.id.KO);
-        permissionOK = (TextView)  findViewById(R.id.OK);
-        permissionKO.setVisibility(View.INVISIBLE);
-        permissionOK.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -44,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, "Acceso a contactos!", Toast.LENGTH_LONG).show();
                     StartActivity(ListContacts.class);
                 } else {
-                    permissionKO.setVisibility(View.VISIBLE);
-                    permissionOK.setVisibility(View.GONE);
+
                     //Toast.makeText(this, "Funcionalidad Limitada!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -99,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void GpsButtonAction(View v){
         requestPermission(this, Manifest.permission.ACCESS_FINE_LOCATION, "Es necesario Acceder a la ubicacion" +
-                "para calcular la distancia" ,MY_PERMISSIONS_REQUEST_GPS , GPSActivity.class);
+                "para calcular la distancia" ,MY_PERMISSIONS_REQUEST_GPS , MapsActivity.class);
     }
 
 }
